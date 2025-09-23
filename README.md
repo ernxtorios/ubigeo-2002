@@ -29,10 +29,4 @@ La ubicación de las tablas externas serán las siguientes:
 * __/dtlk/data/silver/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa silver
 * __/dtlk/data/gold/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa gold
 
-## Entorno de trabajo
-Se tiene el entorno de trabajo que se muestra en la imagen que sigue.
-
-![Entorno de trabajo](images/entorno_trabajo.png)
-
-Los archivos fuentes de datos contenidos en la computadora con Windows 11 (con WSL) serán pasados al nodo frontera del data lake (lluyllucucha) desde donde serán ingestados al sistema HDFS, para su procesamiento y consumo.
 
