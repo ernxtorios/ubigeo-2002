@@ -35,7 +35,11 @@ Se tiene un archivo solución __pipeline.py__ que recibe como argumento la capa 
 
 ### Ejempos de uso
 > cd src/
+> 
 > python pipeline.py bronze
+>
 > python pipeline.py silver
+>
 > python pipeline.py gold
+> 
 > python pipeline.py bronze && python pipeline.py silver && python pipeline.py gold
