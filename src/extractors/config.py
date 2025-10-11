@@ -1,0 +1,4 @@
+USER_SERVER_ORIGIN = "ernestosegundo@192.168.1.33"
+SSH_PORT_ORIGIN = "31376"
+SERVER_DESTINATION = "lluyllucucha"
+PROJECT_NAME = "ubigeo"

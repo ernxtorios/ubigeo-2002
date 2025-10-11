@@ -1,0 +1,7 @@
+PROJECT_NAME = "ubigeo"
+HDFS_PATH_BRONZE = "hdfs://lluyllucucha:9000/dtlk/bronze/ubigeo/"
+HDFS_PATH_SILVER = "hdfs://lluyllucucha:9000/dtlk/silver/ubigeo/"
+HDFS_PATH_GOLD = "hdfs://lluyllucucha:9000/dtlk/gold/ubigeo/"
+PREFIX_BRONZE = "bronze_"
+PREFIX_SILVER = "silver_"
+PREFIX_GOLD = "gold_"
