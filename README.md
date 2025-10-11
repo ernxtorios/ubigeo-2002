@@ -25,8 +25,6 @@ El proyecto trata de trasladar esta información, contenida en los archivos DBF,
   - __silver_categorias2002__: Categorías de centros poblados al año 2002
 
 La ubicación de las tablas externas serán las siguientes:
-* __/dtlk/data/bronze/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa bronze
-* __/dtlk/data/silver/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa silver
-* __/dtlk/data/gold/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa gold
-
-
+* __/dtlk/bronze/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa bronze
+* __/dtlk/silver/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa silver
+* __/dtlk/gold/<nombre_proyecto>/<nombre_tabla>/external__: Para las tablas en la capa gold
