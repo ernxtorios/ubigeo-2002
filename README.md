@@ -33,7 +33,7 @@ La ubicación de las tablas externas son las siguientes:
 ## Solución
 Se tiene un archivo solución __pipeline.py__ que recibe como argumento la capa en la que se cargarán los datos, considerando una de las tres opciones: bronze, silver o gold.
 
-### Ejempos de uso
+### Ejemplo de uso
 > cd src/
 > 
 > python pipeline.py bronze
