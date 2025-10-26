@@ -160,14 +160,16 @@ class Transform():
         """
         try:
             df_capitales_departamento2002 = (
-                dataframe_1.alias("d").join(dataframe_2.alias("p"), "coddpto")
-                .select(col("d.coddpto").alias("codigo_departamento"),
-                        col("d.nombre").alias("departamento"),
-                        col("p.nombre").alias("capital"))
-                .where("codprov = '01'")
+                dataframe_1.alias("d").join(dataframe_2.alias("p"),"coddpto")
+                .filter(col("p.codprov") == "01")
+                .select(
+                    col("d.coddpto").alias("codigo_departamento"),
+                    col("d.nombre").alias("departamento"),
+                    col("p.nombre").alias("capital")
+                )
                 .orderBy("codigo_departamento")
             )
-    
+
             return df_capitales_departamento2002
         except Exception as e:
             print(f"Error getting dataframe of the department capitals: {e}")
@@ -184,10 +186,10 @@ class Transform():
         """
         try:
             df_cantidad_provincias_departamento2002 = (
-                dataframe_1.alias("d").join(dataframe_2.alias("p"), "coddpto")
-                .groupby("d.coddpto")
-                .agg(count("p.codprov").alias("cantidad_provincias"))
-                .select(col("coddpto").alias("codigo_departamento"), "cantidad_provincias")
+                dataframe_2
+                .groupBy(col("coddpto").alias("codigo_departamento"))
+                .agg(count("codprov").alias("cantidad_provincias"))
+                .select("codigo_departamento", "cantidad_provincias")
                 .orderBy("codigo_departamento")
             )
     
@@ -210,7 +212,9 @@ class Transform():
             df_cantidad_provincias_departamento2002 = self.get_cantidad_provincias_departamento_2002(spark, dataframe_1, dataframe_2)
             
             df_departamentos_capitales_provincias2002 = (
-                df_capitales_departamento2002.join(df_cantidad_provincias_departamento2002, "codigo_departamento")
+                df_capitales_departamento2002
+                .join(df_cantidad_provincias_departamento2002,
+                      "codigo_departamento")
                 .select("*")
                 .orderBy("codigo_departamento")
             )
