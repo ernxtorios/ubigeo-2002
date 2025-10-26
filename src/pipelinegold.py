@@ -14,6 +14,7 @@ class PipelineGold():
         self.df_silver_provincias2002 = None
 
         self.df_departamentos_capitales_provincias2002 = None
+        self.df_departamentos_provincias_distritos2002 = None
     
     def extracting(self):
         try:
