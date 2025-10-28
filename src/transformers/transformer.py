@@ -175,18 +175,17 @@ class Transform():
             print(f"Error getting dataframe of the department capitals: {e}")
             return None
 
-    def get_cantidad_provincias_departamento_2002(self, spark: SparkSession, dataframe_1: DataFrame, dataframe_2: DataFrame):
+    def get_cantidad_provincias_departamento_2002(self, spark: SparkSession, dataframe: DataFrame):
         """
         Returns a dataframe with the number of provinces per department of Peru
         
         Args:
             spark (SparkSession): The SparkSession object.
-            dataframe_1 (DataFrame): The DataFrame object.
-            dataframe_2 (DataFrame): The DataFrame object.
+            dataframe (DataFrame): The DataFrame object.
         """
         try:
             df_cantidad_provincias_departamento2002 = (
-                dataframe_2
+                dataframe
                 .groupBy(col("coddpto").alias("codigo_departamento"))
                 .agg(count("codprov").alias("cantidad_provincias"))
                 .select("codigo_departamento", "cantidad_provincias")
@@ -209,7 +208,7 @@ class Transform():
         """
         try:
             df_capitales_departamento2002 = self.get_capitales_departamento_2002(spark, dataframe_1, dataframe_2)
-            df_cantidad_provincias_departamento2002 = self.get_cantidad_provincias_departamento_2002(spark, dataframe_1, dataframe_2)
+            df_cantidad_provincias_departamento2002 = self.get_cantidad_provincias_departamento_2002(spark, dataframe_2)
             
             df_departamentos_capitales_provincias2002 = (
                 df_capitales_departamento2002
@@ -222,4 +221,27 @@ class Transform():
             return df_departamentos_capitales_provincias2002
         except Exception as e:
             print(f"Error getting dataframe of the department capitals and provinces: {e}")
+            return None
+
+    def get_cantidad_distritos_provincia_2002(self, spark: SparkSession, dataframe: DataFrame):
+        """
+        Returns a dataframe with the number of provinces per department of Peru
+
+        Args:
+            spark (SparkSession): The SparkSession object.
+            dataframe (DataFrame): The DataFrame object.
+        """
+        try:
+            df_cantidad_distritos_provincia2002 = (
+                dataframe
+                .groupBy(col("coddpto").alias("codigo_departamento"),
+                         col("codprov").alias("codigo_provincia"))
+                .agg(count("coddist").alias("cantidad_distritos"))
+                .select("codigo_departamento", "codigo_provincia", "codigo_distrito", "cantidad_provincias")
+                .orderBy("codigo_departamento", "codigo_provincia")
+            )
+
+            return df_cantidad_distritos_provincia2002
+        except Exception as e:
+            print(f"Error getting dataframe of the department capitals: {e}")
             return None
